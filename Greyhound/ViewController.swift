@@ -10,60 +10,72 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var titleLabel: UILabel!
-    var playBtn: UIButton!
-    var stopBtn: UIButton!
     var titleView: UIView!
     var contentView: UIView!
     var controlsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.darkGray
-        
-//
-
-//        titleLabel.text = "This is the title"
-//        playBtn.titleLabel?.text = "Play Button"
-//        stopBtn.titleLabel?.text = "Stop Button"
-        
-        
-        titleView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 75))
-        titleView.backgroundColor = UIColor.blue
-        self.view.addSubview(titleView)
-        
-        contentView = UIView(frame: CGRect(x: 0, y: 75, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        contentView.backgroundColor = UIColor.orange
-        self.view.addSubview(contentView)
-        
-        controlsView = UIView(frame: CGRect(x: 0, y: self.view.frame.size.height - 75, width: self.view.frame.size.width, height: 75))
-        controlsView.backgroundColor = UIColor.gray
-        self.view.addSubview(controlsView)
-        
+        self.view.backgroundColor = UIColor.cyan
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
         self.setupPositions()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func onPlayTapped(_ sender: Any) {
-        //method for what happens when play is tapped
-    }
-    
-    @IBAction func onStopTapped(_ sender: Any) {
-        //method for what happens when stop is tapped
-    }
     
     func setupPositions(){
+        //pin headerView to top
+        titleView = UIView()
+        titleView.backgroundColor = UIColor.blue
+        titleView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(titleView)
+        titleView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        titleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        titleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        titleView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         
-//        titleView.translatesAutoresizingMaskIntoConstraints = true
-//        titleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-//        titleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//        titleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        //titleView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 3).isActive = true
+        controlsView = UIView()
+        controlsView.backgroundColor = UIColor.gray
+        controlsView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(controlsView)
+        controlsView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        controlsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        controlsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        controlsView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+        
+        let playBtn = UIButton()
+        playBtn.frame = CGRect(x: 10, y: 10, width: 100, height: 50)
+        playBtn.backgroundColor = UIColor.red
+        playBtn.setTitle("play", for: .normal)
+        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        controlsView.addSubview(playBtn)
+        
+        let stopBtn = UIButton()
+        stopBtn.frame = CGRect(x: 250, y: 10, width: 100, height: 50)
+        stopBtn.backgroundColor = UIColor.red
+        stopBtn.setTitle("Stop", for: .normal)
+        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        controlsView.addSubview(stopBtn)
+        
+        contentView = UIView()
+        contentView.backgroundColor = UIColor.orange
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(contentView)
+        contentView.topAnchor.constraint(equalTo: titleView.bottomAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: controlsView.topAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
         
     }
 }
+
+
+
 
