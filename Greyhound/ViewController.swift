@@ -53,14 +53,14 @@ class ViewController: UIViewController {
         playBtn.frame = CGRect(x: 10, y: 10, width: 100, height: 50)
         playBtn.backgroundColor = UIColor.red
         playBtn.setTitle("play", for: .normal)
-        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        playBtn.addTarget(self, action: #selector(onPlayTapped), for: .touchUpInside)
         controlsView.addSubview(playBtn)
         
         let stopBtn = UIButton()
         stopBtn.frame = CGRect(x: 250, y: 10, width: 100, height: 50)
         stopBtn.backgroundColor = UIColor.red
         stopBtn.setTitle("Stop", for: .normal)
-        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        stopBtn.addTarget(self, action: #selector(onStopTapped), for: .touchUpInside)
         controlsView.addSubview(stopBtn)
         
         contentView = UIView()
@@ -73,6 +73,14 @@ class ViewController: UIViewController {
         contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         
+    }
+    
+    @objc func onPlayTapped(sender: UIButton!) {
+        print("Play Button tapped")
+    }
+    
+    @objc func onStopTapped(sender: UIButton!) {
+        print("Stop Button tapped")
     }
 }
 
